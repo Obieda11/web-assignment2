@@ -41,4 +41,26 @@ window.onload = function () {
           if (task.completed) {
             li.classList.add("completed");
           }
+
+          let span = document.createElement("span");
+          span.innerText = task.text;
+          span.style.cursor = "pointer";
+    
+          
+          span.addEventListener("click", function () {
+            task.completed = !task.completed;
+            showTasks();
+          });
+    
+          
+          let deleteBtn = document.createElement("button");
+          deleteBtn.innerText = "Delete";
+    
+          deleteBtn.addEventListener("click", function () {
+            tasks = tasks.filter(function (t) {
+              return t.id !== task.id;
+            });
+            showTasks();
+          });
+    
 }
