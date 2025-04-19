@@ -62,5 +62,16 @@ window.onload = function () {
             });
             showTasks();
           });
+
+
+                  
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+  
+        
+        taskList.appendChild(li);
+      });
+    }
+  
     
 }
