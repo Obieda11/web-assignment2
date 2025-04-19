@@ -49,3 +49,36 @@
     list-style: none;
     padding: 0;
   }
+
+  li {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  li.completed {
+    text-decoration: line-through;
+    color: gray;
+    background-color: #d4ffd4;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .filter-btn.active {
+    background: #000000;
+    color: #fff;
+  }
+  
