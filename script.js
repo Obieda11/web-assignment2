@@ -24,4 +24,21 @@ window.onload = function () {
         showTasks();
       }
     });
+
+        
+    function showTasks() {
+        taskList.innerHTML = ""; 
+    
+        let filtered = tasks.filter(function (task) {
+          if (currentFilter === "all") return true;
+          if (currentFilter === "completed") return task.completed;
+          if (currentFilter === "pending") return !task.completed;
+        });
+    
+        filtered.forEach(function (task) {
+          
+          let li = document.createElement("li");
+          if (task.completed) {
+            li.classList.add("completed");
+          }
 }
