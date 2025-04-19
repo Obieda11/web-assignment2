@@ -24,47 +24,47 @@ window.onload = function () {
         showTasks();
       }
     });
-
-        
+  
+    
     function showTasks() {
-        taskList.innerHTML = ""; 
-    
-        let filtered = tasks.filter(function (task) {
-          if (currentFilter === "all") return true;
-          if (currentFilter === "completed") return task.completed;
-          if (currentFilter === "pending") return !task.completed;
+      taskList.innerHTML = ""; 
+  
+      let filtered = tasks.filter(function (task) {
+        if (currentFilter === "all") return true;
+        if (currentFilter === "completed") return task.completed;
+        if (currentFilter === "pending") return !task.completed;
+      });
+  
+      filtered.forEach(function (task) {
+        
+        let li = document.createElement("li");
+        if (task.completed) {
+          li.classList.add("completed");
+        }
+  
+        
+        let span = document.createElement("span");
+        span.innerText = task.text;
+        span.style.cursor = "pointer";
+  
+        
+        span.addEventListener("click", function () {
+          task.completed = !task.completed;
+          showTasks();
         });
-    
-        filtered.forEach(function (task) {
-          
-          let li = document.createElement("li");
-          if (task.completed) {
-            li.classList.add("completed");
-          }
-
-          let span = document.createElement("span");
-          span.innerText = task.text;
-          span.style.cursor = "pointer";
-    
-          
-          span.addEventListener("click", function () {
-            task.completed = !task.completed;
-            showTasks();
+  
+        
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+  
+        deleteBtn.addEventListener("click", function () {
+          tasks = tasks.filter(function (t) {
+            return t.id !== task.id;
           });
-    
-          
-          let deleteBtn = document.createElement("button");
-          deleteBtn.innerText = "Delete";
-    
-          deleteBtn.addEventListener("click", function () {
-            tasks = tasks.filter(function (t) {
-              return t.id !== task.id;
-            });
-            showTasks();
-          });
-
-
-                  
+          showTasks();
+        });
+  
+        
         li.appendChild(span);
         li.appendChild(deleteBtn);
   
@@ -72,27 +72,27 @@ window.onload = function () {
         taskList.appendChild(li);
       });
     }
-        
+  
+    
     filterButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          
-          filterButtons.forEach(function (btn) {
-            btn.classList.remove("active");
-          });
-    
-          
-          button.classList.add("active");
-    
-          
-          currentFilter = button.getAttribute("data-filter");
-    
-          
-          showTasks();
+      button.addEventListener("click", function () {
+        
+        filterButtons.forEach(function (btn) {
+          btn.classList.remove("active");
         });
+  
+        
+        button.classList.add("active");
+  
+        
+        currentFilter = button.getAttribute("data-filter");
+  
+        
+        showTasks();
       });
+    });
+  
     
-      
-      showTasks();
-    };
-    
+    showTasks();
+  };
   
